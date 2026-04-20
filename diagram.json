@@ -1,7 +1,27 @@
 {
   "version": 1,
-  "author": "Uri Shaked",
+  "author": "Gilvan",
   "editor": "wokwi",
-  "parts": [ { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} } ],
-  "connections": [ [ "esp:TX", "$serialMonitor:RX", "", [] ], [ "esp:RX", "$serialMonitor:TX", "", [] ] ]
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "led", "id": "led1", "top": -80, "left": 210, "attrs": { "color": "red" } },
+    { "type": "led", "id": "led2", "top": -10, "left": 210, "attrs": { "color": "yellow" } },
+    { "type": "led", "id": "led3", "top": 60, "left": 210, "attrs": { "color": "green" } },
+    { "type": "resistor", "id": "r1", "top": -77, "left": 310, "attrs": { "value": "220" } },
+    { "type": "resistor", "id": "r2", "top": -7, "left": 310, "attrs": { "value": "220" } },
+    { "type": "resistor", "id": "r3", "top": 63, "left": 310, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:26", "led1:A", "red", [] ],
+    [ "led1:K", "r1:1", "red", [] ],
+    [ "r1:2", "esp:GND.1", "black", [] ],
+    [ "esp:27", "led2:A", "yellow", [] ],
+    [ "led2:K", "r2:1", "yellow", [] ],
+    [ "r2:2", "esp:GND.1", "black", [] ],
+    [ "esp:14", "led3:A", "green", [] ],
+    [ "led3:K", "r3:1", "green", [] ],
+    [ "r3:2", "esp:GND.1", "black", [] ]
+  ]
 }
