@@ -3,7 +3,6 @@
 ## 👤 Identificação do Candidato
 
 - **Nome completo:** Gilvan Alves Pastor Junior
-- **GitHub:** GilvanTWS
 
 ---
 
