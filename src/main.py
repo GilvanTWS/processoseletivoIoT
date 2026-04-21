@@ -26,7 +26,7 @@ def estado_amarelo():
     led_amarelo.on()
     time.sleep(2)
 
-print("Semaforo iniciado!")
+print("Teste")
 
 while True:
     estado_vermelho()
