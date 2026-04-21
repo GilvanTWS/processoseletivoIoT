@@ -22,7 +22,7 @@ O programa segue um fluxo simples e direto:
 - Cada função apaga todos os LEDs antes de acender o correspondente, evitando sobreposição de sinais
 - O controle de tempo é feito com `time.sleep()`, simulando a duração real de cada fase do semáforo
 
-  ## 3️⃣ Componentes Utilizados na Simulação
+## 3️⃣ Componentes Utilizados na Simulação
 
 | Componente | ID | Função |
 |---|---|---|
@@ -31,3 +31,12 @@ O programa segue um fluxo simples e direto:
 | LED amarelo | led2 | Indica sinal de atenção |
 | LED verde | led3 | Indica sinal de passagem |
 | Resistor 220Ω | r1, r2, r3 | Proteção dos LEDs contra sobrecorrente |
+
+---
+
+## 4️⃣ Decisões Técnicas Relevantes
+
+- Cada estado do semáforo foi isolado em sua própria função, tornando o código mais legível e fácil de manter
+- A função `todos_apagados()` centraliza o desligamento dos LEDs, evitando repetição de código
+- Os tempos escolhidos (5s vermelho, 4s verde, 2s amarelo) seguem proporções realistas de um semáforo real
+- O uso de `Pin.OUT` configura os pinos corretamente para controle de saída digital
