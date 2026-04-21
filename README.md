@@ -40,3 +40,16 @@ O programa segue um fluxo simples e direto:
 - A função `todos_apagados()` centraliza o desligamento dos LEDs, evitando repetição de código
 - Os tempos escolhidos (5s vermelho, 4s verde, 2s amarelo) seguem proporções realistas de um semáforo real
 - O uso de `Pin.OUT` configura os pinos corretamente para controle de saída digital
+
+---
+
+## 5️⃣ Resultados Obtidos
+
+O sistema funciona corretamente na simulação do Wokwi. O ciclo do semáforo roda de forma contínua, alternando entre os três estados sem erros. O pipeline do GitHub Actions executa a simulação e valida a saída com sucesso, confirmando o funcionamento do projeto.
+
+---
+
+## 6️⃣ Comentários Adicionais
+
+O maior desafio foi entender a relação entre o `diagram.json`, o `wokwi.toml` e o código Python — como esses três arquivos trabalham juntos para montar e rodar a simulação. Com mais tempo, seria interessante adicionar um botão de pedestre que interrompe o ciclo e força o sinal vermelho, tornando o sistema mais interativo.
+
