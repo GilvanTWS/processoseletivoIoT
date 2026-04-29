@@ -1,1 +1,23 @@
+# Arquivos de cache do Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Ambientes virtuais
+venv/
 .env
+
+# Arquivos gerados pela build
+*.bin
+*.elf
+*.map
+
+# Configurações locais do VS Code
+.vscode/
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
