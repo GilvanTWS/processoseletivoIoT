@@ -6,32 +6,45 @@ led_vermelho = Pin(26, Pin.OUT)
 led_amarelo  = Pin(27, Pin.OUT)
 led_verde    = Pin(14, Pin.OUT)
 
+# Duração de cada estado em milissegundos
+TEMPO_VERMELHO = 3000
+TEMPO_VERDE    = 2000
+TEMPO_AMARELO  = 1000
+
+# Estados possíveis do semáforo
+ESTADOS = ["vermelho", "verde", "amarelo"]
+estado_atual = 0
+
 def todos_apagados():
-    # Garante que todos os LEDs estejam desligados antes de acender o próximo
+    # Apaga todos os LEDs antes de acender o próximo
     led_vermelho.off()
     led_amarelo.off()
     led_verde.off()
 
-def estado_vermelho():
+def ativar_estado(estado):
+    # Acende o LED correspondente ao estado atual
     todos_apagados()
-    led_vermelho.on()
-    time.sleep(5)  # Sinal vermelho dura 5 segundos
+    if estado == "vermelho":
+        led_vermelho.on()
+    elif estado == "verde":
+        led_verde.on()
+    elif estado == "amarelo":
+        led_amarelo.on()
 
-def estado_verde():
-    todos_apagados()
-    led_verde.on()
-    time.sleep(4)  # Sinal verde dura 4 segundos
-
-def estado_amarelo():
-    todos_apagados()
-    led_amarelo.on()
-    time.sleep(2)  # Sinal amarelo dura 2 segundos — atenção, vai fechar!
-
-# Mensagem inicial para confirmar que o sistema subiu corretamente
 print("Teste")
 
-# Loop principal: ciclo contínuo do semáforo
+# Inicializa o primeiro estado
+ativar_estado(ESTADOS[estado_atual])
+tempo_inicio = time.ticks_ms()
+
+# Loop principal com temporização não-bloqueante
 while True:
-    estado_vermelho()
-    estado_verde()
-    estado_amarelo()
+    agora = time.ticks_ms()
+    duracao = [TEMPO_VERMELHO, TEMPO_VERDE, TEMPO_AMARELO][estado_atual]
+
+    # Verifica se o tempo do estado atual já passou
+    if time.ticks_diff(agora, tempo_inicio) >= duracao:
+        estado_atual = (estado_atual + 1) % len(ESTADOS)
+        ativar_estado(ESTADOS[estado_atual])
+        tempo_inicio = time.ticks_ms()
+        print("Estado:", ESTADOS[estado_atual])
